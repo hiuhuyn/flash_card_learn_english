@@ -1,0 +1,46 @@
+{
+  "project_info": {
+    "project_number": "92218904866",
+    "project_id": "app-flash-cards",
+    "storage_bucket": "app-flash-cards.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:92218904866:android:a35371ac228e95f002957b",
+        "android_client_info": {
+          "package_name": "com.example.flash_card_learn_english"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "92218904866-mddfn5qrs9kallrnsmeqml4qdds04g78.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCrtLRdgDpDgYlNPDRgkSp184kACXo5geo"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "92218904866-mddfn5qrs9kallrnsmeqml4qdds04g78.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "92218904866-o6omlbpfmjua9l205s4ccr1cutb2egus.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "com.example.appFlatCard"
+              }
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
