@@ -67,20 +67,18 @@ class VocabularysController extends ChangeNotifier {
     int index =
         _topic.vocabularys.indexWhere((element) => element.id == value.id);
     if (index != -1) {
-      if (isOnline) {
-        try {
-          final Vocabulary before = _topic.vocabularys[index];
-          await TopicFirebase.deleteVocabularys(_topic.id!, [before]);
-          try {
-            await TopicFirebase.addVocabularys(_topic.id!, [value]);
-          } catch (e) {
-            print("add fail: $e");
-          }
-        } catch (e) {
-          print("delete failed: $e");
-        }
-      } else {
-        await TopicSqlite.updateVocabulary(value);
+      final Vocabulary before = _topic.vocabularys[index];
+      print("before color: ${before.color}");
+      print("value color: ${value.color}");
+      try {
+        await TopicFirebase.deleteVocabularys(_topic.id!, [before]);
+      } catch (e) {
+        print("delete failed: $e");
+      }
+      try {
+        await TopicFirebase.addVocabularys(_topic.id!, [value]);
+      } catch (e) {
+        print("add failed: $e");
       }
 
       _topic.vocabularys[index] = value;

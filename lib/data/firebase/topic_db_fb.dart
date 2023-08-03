@@ -7,7 +7,7 @@ class TopicFirebase {
   static final db = FirebaseFirestore.instance;
 
   static Future<String> createTopic(Topic topic) async {
-    var res = await db.collection("topics").add(topic.toMap());
+    var res = await db.collection("topics").add(topic.toMapAdd());
     return res.id;
   }
 
@@ -42,6 +42,7 @@ class TopicFirebase {
   }
 
   static Future deleteVocabularys(String idTopic, List<Vocabulary> data) async {
+    print("Deleting vocabulary: $data");
     await db.collection('topics').doc(idTopic).update({
       "vocabularys": FieldValue.arrayRemove(data.map((e) => e.toMap()).toList())
     });

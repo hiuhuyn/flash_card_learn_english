@@ -28,6 +28,7 @@ class _SwitchLanguageStateScreen extends State<SwitchLanguageScreen> {
       child: Scaffold(
         appBar: AppBar(
           backgroundColor: Colors.white,
+          elevation: 1,
           title: Text(
             AppLocalizations.of(context)!.language,
             style: const TextStyle(color: Colors.black),
@@ -49,31 +50,22 @@ class _SwitchLanguageStateScreen extends State<SwitchLanguageScreen> {
   }
 
   Widget item(Language language) {
-    return Container(
-      padding: const EdgeInsets.all(10),
-      decoration:
-          BoxDecoration(border: Border.all(color: Colors.grey, width: 0.5)),
-      child: Row(
-        mainAxisAlignment: MainAxisAlignment.spaceBetween,
-        children: [
-          Text(
-            language.title,
-            style: TextStyle(fontSize: 16.sp),
-          ),
-          Radio<String>(
-            groupValue: _radioVal,
-            onChanged: (value) {
-              if (value != null) {
-                setState(() {
-                  _radioVal = value;
-                });
-                context.read<SettingApp>().setLocale(language);
-              }
-            },
-            value: language.key,
-          )
-        ],
+    return RadioListTile(
+      shape: Border.all(width: 0.2, color: Colors.grey),
+      title: Text(
+        language.title,
+        style: TextStyle(fontSize: 16.sp),
       ),
+      value: language.key,
+      groupValue: _radioVal,
+      onChanged: (value) {
+        if (value != null) {
+          setState(() {
+            _radioVal = value;
+          });
+          context.read<SettingApp>().setLocale(language);
+        }
+      },
     );
   }
 }

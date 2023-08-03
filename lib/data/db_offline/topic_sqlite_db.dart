@@ -69,15 +69,53 @@ class TopicSqlite {
     return result;
   }
 
-  static Future addTopic(Topic topic) async {
-    if (!_db.isOpen) {
-      await initDB();
+  static Future<Topic?> getTopic(String id) async {
+    try {
+      final jsons = await _db
+          .rawQuery('select * from $kDbTableTopic where idTopic = ?', [id]);
+      print("result sqlite: $jsons");
+      if (jsons.isEmpty) {
+        return null;
+      }
+      Map<String, dynamic> map = Map.from(jsons.first);
+      map["id"] = map["idTopic"];
+      return Topic.fromMap2(map);
+    } catch (e) {
+      print("getTopic error: $e");
     }
-    int id1 = await _db.rawInsert(
-        "INSERT INTO $kDbTableTopic(idTopic, title) VALUES(?, ?)",
-        [topic.id, topic.title]);
+  }
+
+  static Future addTopic(Topic topic) async {
+    try {
+      if (!_db.isOpen) {
+        await initDB();
+      }
+      Topic? topicOff = await getTopic(topic.id!);
+      print("Topic off: $topicOff");
+      if (topicOff != null) {
+        await deleteTopic(topic.id!);
+      }
+      int id1 = await _db.rawInsert(
+          "INSERT INTO $kDbTableTopic(idTopic, title) VALUES(?, ?)",
+          [topic.id, topic.title]);
+      await Future.forEach(topic.vocabularys, (element) async {
+        await addVocabulary(topic.id!, element);
+      });
+    } catch (e) {
+      print("addTopic error: $e");
+    }
+  }
+
+  static Future updateTopic(Topic topic) async {
+    try {
+      int count = await _db.rawUpdate(
+          'UPDATE $kDbTableTopic SET title = ? WHERE idTopic = ?',
+          [topic.title, topic.id]);
+    } catch (e) {
+      print(e);
+    }
     await Future.forEach(topic.vocabularys, (element) async {
-      await addVocabulary(topic.id!, element);
+      await updateVocabulary(element);
     });
   }
 
@@ -146,17 +184,21 @@ class TopicSqlite {
   }
 
   static Future updateVocabulary(Vocabulary value) async {
-    await _db.rawUpdate(
-        '''update $kDbTableVocabulary 
+    try {
+      await _db.rawUpdate(
+          '''update $kDbTableVocabulary 
     set terms = ?,spelling= ?,define= ?,example= ?,color= ?, textColor = ? where idVocabulary = ?''',
-        [
-          value.terms,
-          value.spelling,
-          value.define,
-          value.example,
-          value.color,
-          value.textColor,
-          value.id
-        ]);
+          [
+            value.terms,
+            value.spelling,
+            value.define,
+            value.example,
+            value.color,
+            value.textColor,
+            value.id
+          ]);
+    } catch (e) {
+      print("updateVocabulary error: $e");
+    }
   }
 }

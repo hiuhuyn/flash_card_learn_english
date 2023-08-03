@@ -53,6 +53,16 @@ class Topic extends Equatable {
     };
   }
 
+  Map<String, dynamic> toMapAdd() {
+    return <String, dynamic>{
+      'title': title,
+      'email': email,
+      'initAt': initAt,
+      'isPublic': isPublic,
+      'vocabularys': vocabularys.map((x) => x.toMap()).toList(),
+    };
+  }
+
   factory Topic.fromMap(
       {required String id, required Map<String, dynamic> map}) {
     List<Vocabulary> listV = [];

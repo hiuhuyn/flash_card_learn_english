@@ -59,14 +59,13 @@ class Vocabulary extends Equatable {
 
   factory Vocabulary.fromMap(Map<String, dynamic> map) {
     return Vocabulary(
-      id: map['id'] ?? "",
-      terms: map['terms'] ?? "",
-      spelling: map['spelling'] ?? "",
-      define: map['define'] ?? "",
-      example: map['example'] ?? "",
-      color: map['color'] ?? 0xFFffffff,
-      textColor: map['textColor'] ?? 0xFF000000,
-    );
+        id: map['id'] ?? "",
+        terms: map['terms'] ?? "",
+        spelling: map['spelling'] ?? "",
+        define: map['define'] ?? "",
+        example: map['example'] ?? "",
+        color: map['color'] ?? 0xFFffffff,
+        textColor: map['textColor'] ?? 0xFF000000);
   }
   @override
   String toString() {

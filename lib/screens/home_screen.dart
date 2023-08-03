@@ -46,9 +46,6 @@ class _HomeScreenState extends State<HomeScreen> {
                   context.read<TopicController>().getData();
                 },
                 icon: const Icon(Icons.restart_alt_rounded)),
-            PopupMenuButton(
-              itemBuilder: (ctx) => [],
-            )
           ],
         ),
         body: const TopicsScreen(),
@@ -104,13 +101,6 @@ class _HomeScreenState extends State<HomeScreen> {
         children: [
           _drawerHeader(),
           ListTile(
-            title: const Text(
-              "Chuyển đổi chủ đề",
-              style: TextStyle(color: Colors.black),
-            ),
-            onTap: () {},
-          ),
-          ListTile(
             title: Text(
               AppLocalizations.of(context)!.switch_language,
               style: const TextStyle(color: Colors.black),
@@ -127,27 +117,6 @@ class _HomeScreenState extends State<HomeScreen> {
             onTap: () {
               Navigator.pushNamed(context, RouteName.topicOffline);
             },
-          ),
-          ListTile(
-            title: const Text(
-              "Chính sách bảo mật",
-              style: TextStyle(color: Colors.black),
-            ),
-            onTap: () {},
-          ),
-          ListTile(
-            title: const Text(
-              "Hỗ trợ",
-              style: TextStyle(color: Colors.black),
-            ),
-            onTap: () {},
-          ),
-          ListTile(
-            title: Text(
-              AppLocalizations.of(context)!.share_app,
-              style: const TextStyle(color: Colors.black),
-            ),
-            onTap: () {},
           ),
           ListTile(
             title: Text(

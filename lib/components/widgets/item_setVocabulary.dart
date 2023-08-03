@@ -27,6 +27,14 @@ class ItemSetVocabulary extends StatefulWidget {
 }
 
 class _ItemSetVocabularyState extends State<ItemSetVocabulary> {
+  Vocabulary vocabulary = Vocabulary();
+  @override
+  void initState() {
+    // TODO: implement initState
+    vocabulary = widget.vocabulary;
+    super.initState();
+  }
+
   @override
   Widget build(BuildContext context) {
     return Column(
@@ -34,10 +42,11 @@ class _ItemSetVocabularyState extends State<ItemSetVocabulary> {
         Padding(
           padding: const EdgeInsets.symmetric(vertical: 5),
           child: TextFormField(
-            initialValue: widget.vocabulary.terms,
+            maxLines: null,
+            initialValue: vocabulary.terms,
             textAlignVertical: TextAlignVertical.center,
             onChanged: widget.onChangedTerm,
-            style: TextStyle(color: Color(widget.vocabulary.textColor)),
+            style: TextStyle(color: Color(vocabulary.textColor)),
             decoration: InputDecoration(
               border:
                   OutlineInputBorder(borderRadius: BorderRadius.circular(16)),
@@ -51,10 +60,11 @@ class _ItemSetVocabularyState extends State<ItemSetVocabulary> {
         Padding(
           padding: const EdgeInsets.symmetric(vertical: 5),
           child: TextFormField(
-            initialValue: widget.vocabulary.spelling,
+            maxLines: null,
+            initialValue: vocabulary.spelling,
             textAlignVertical: TextAlignVertical.center,
             onChanged: widget.onChangedSpelling,
-            style: TextStyle(color: Color(widget.vocabulary.textColor)),
+            style: TextStyle(color: Color(vocabulary.textColor)),
             decoration: InputDecoration(
               border:
                   OutlineInputBorder(borderRadius: BorderRadius.circular(16)),
@@ -68,10 +78,11 @@ class _ItemSetVocabularyState extends State<ItemSetVocabulary> {
         Padding(
           padding: const EdgeInsets.symmetric(vertical: 5),
           child: TextFormField(
-            initialValue: widget.vocabulary.define,
+            maxLines: null,
+            initialValue: vocabulary.define,
             textAlignVertical: TextAlignVertical.center,
             onChanged: widget.onChangedDefine,
-            style: TextStyle(color: Color(widget.vocabulary.textColor)),
+            style: TextStyle(color: Color(vocabulary.textColor)),
             decoration: InputDecoration(
               border:
                   OutlineInputBorder(borderRadius: BorderRadius.circular(16)),
@@ -85,10 +96,11 @@ class _ItemSetVocabularyState extends State<ItemSetVocabulary> {
         Padding(
           padding: const EdgeInsets.only(top: 5, bottom: 15),
           child: TextFormField(
-            initialValue: widget.vocabulary.example,
+            maxLines: null,
+            initialValue: vocabulary.example,
             textAlignVertical: TextAlignVertical.center,
             onChanged: widget.onChangedExample,
-            style: TextStyle(color: Color(widget.vocabulary.textColor)),
+            style: TextStyle(color: Color(vocabulary.textColor)),
             decoration: InputDecoration(
               border:
                   OutlineInputBorder(borderRadius: BorderRadius.circular(16)),
@@ -134,9 +146,8 @@ class _ItemSetVocabularyState extends State<ItemSetVocabulary> {
   }
 
   void _showColorPicker(bool isTextColor) {
-    Color pickerColor = isTextColor
-        ? Color(widget.vocabulary.textColor)
-        : Color(widget.vocabulary.color);
+    Color pickerColor =
+        isTextColor ? Color(vocabulary.textColor) : Color(vocabulary.color);
 
     showDialog(
       context: context,
@@ -156,10 +167,10 @@ class _ItemSetVocabularyState extends State<ItemSetVocabulary> {
             onPressed: () {
               setState(() {
                 if (isTextColor) {
-                  widget.vocabulary.textColor = pickerColor.value;
+                  vocabulary.textColor = pickerColor.value;
                   widget.onChangedTextColor(pickerColor.value);
                 } else {
-                  widget.vocabulary.color = pickerColor.value;
+                  vocabulary.color = pickerColor.value;
                   widget.onChangedBackgroudColor(pickerColor.value);
                 }
               });

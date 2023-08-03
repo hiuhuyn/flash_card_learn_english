@@ -5,6 +5,7 @@ import 'package:flash_card_learn_english/controllers/vocabularys_controller.dart
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import '../components/router/route_name.dart';
+import '../components/utils/notifications.dart';
 import '../models/topic.dart';
 import '../models/vocabulary.dart';
 import 'package:flutter/material.dart';
@@ -24,6 +25,7 @@ class _VocabularysScreenState extends State<VocabularysScreen> {
   final TextEditingController _searchCtrl = TextEditingController();
   final FocusNode _focusNodeSearch = FocusNode();
   Topic _topic = Topic(title: '');
+  int i = 0;
   @override
   void initState() {
     // TODO: implement initState
@@ -46,38 +48,40 @@ class _VocabularysScreenState extends State<VocabularysScreen> {
         child: Scaffold(
       appBar: AppBar(
         elevation: 1,
-        backgroundColor: Colors.white,
+        backgroundColor: Colors.amber,
         leading: IconButton(
             onPressed: () {
               Navigator.pop(context);
             },
             icon: const Icon(
               Icons.arrow_back,
-              color: Colors.black,
+              color: Colors.white,
             )),
         title: Text(
           AppLocalizations.of(context)!.list_vocbulary,
-          style: const TextStyle(color: Colors.black),
+          style: const TextStyle(color: Colors.white),
         ),
         actions: [
           IconButton(
-              onPressed: () {},
-              icon: const Icon(
-                Icons.filter_alt_outlined,
-                color: Colors.black,
-              )),
-          IconButton(
               onPressed: () {
-                if (context.read<VocabularysController>().isOnline) {
-                  context.read<TopicController>().deleteTopic(_topic.id!);
-                } else {
-                  context.read<TopicCtrlOffline>().deleteTopic(_topic.id!);
-                }
-                Navigator.pop(context);
+                NotificationsSystem.alertDialog(context,
+                    title: Text(
+                      AppLocalizations.of(context)!
+                          .are_you_sure_you_want_to_delete_the_topic,
+                      style: const TextStyle(fontSize: 16),
+                    ), onTapYes: () async {
+                  if (context.read<VocabularysController>().isOnline) {
+                    context.read<TopicController>().deleteTopic(_topic.id!);
+                  } else {
+                    context.read<TopicCtrlOffline>().deleteTopic(_topic.id!);
+                  }
+                  Navigator.pop(context);
+                  Navigator.pop(context);
+                });
               },
               icon: const Icon(
                 Icons.delete,
-                color: Colors.black,
+                color: Colors.white,
               )),
         ],
       ),
@@ -119,6 +123,8 @@ class _VocabularysScreenState extends State<VocabularysScreen> {
               child: Consumer<VocabularysController>(
                   builder: (context, controller, child) {
                 _topic = controller.topic;
+                print("build: $i");
+                i++;
                 return _topic.vocabularys.isEmpty
                     ? Center(
                         child: Text(
@@ -166,7 +172,7 @@ class _VocabularysScreenState extends State<VocabularysScreen> {
                                   SlidableAction(
                                     padding: const EdgeInsets.all(10),
                                     onPressed: (_) {
-                                      _showBottomSheetEditVocabulary(index);
+                                      _showBottomSheetEditVocabulary(data);
                                     },
                                     backgroundColor: const Color(0xFF21B7CA),
                                     foregroundColor: Colors.white,
@@ -190,6 +196,7 @@ class _VocabularysScreenState extends State<VocabularysScreen> {
       floatingActionButton: !isOnline
           ? null
           : FloatingActionButton(
+              backgroundColor: Colors.amber,
               onPressed: () {
                 Navigator.pushNamed(context, RouteName.addVocabularys);
               },
@@ -198,8 +205,9 @@ class _VocabularysScreenState extends State<VocabularysScreen> {
     ));
   }
 
-  void _showBottomSheetEditVocabulary(int index) {
-    Vocabulary vocabulary = _topic.vocabularys[index];
+  void _showBottomSheetEditVocabulary(Vocabulary value) {
+    Vocabulary vocabulary = value;
+    vocabulary = vocabulary.copyWith(color: value.color);
     showModalBottomSheet(
       context: context,
       isScrollControlled: true,
@@ -218,16 +226,16 @@ class _VocabularysScreenState extends State<VocabularysScreen> {
                   ItemSetVocabulary(
                     vocabulary: vocabulary,
                     onChangedTerm: (value) {
-                      vocabulary = vocabulary.copyWith(terms: value);
+                      vocabulary = vocabulary.copyWith(terms: value.trim());
                     },
                     onChangedSpelling: (value) {
-                      vocabulary = vocabulary.copyWith(spelling: value);
+                      vocabulary = vocabulary.copyWith(spelling: value.trim());
                     },
                     onChangedDefine: (value) {
-                      vocabulary = vocabulary.copyWith(define: value);
+                      vocabulary = vocabulary.copyWith(define: value.trim());
                     },
                     onChangedExample: (value) {
-                      vocabulary = vocabulary.copyWith(example: value);
+                      vocabulary = vocabulary.copyWith(example: value.trim());
                     },
                     onChangedBackgroudColor: (color) {
                       vocabulary = vocabulary.copyWith(color: color);
@@ -249,11 +257,11 @@ class _VocabularysScreenState extends State<VocabularysScreen> {
                           await context
                               .read<VocabularysController>()
                               .updateVocabulary(vocabulary)
-                              .then((_) {
-                            context.read<TopicController>().updateTopic(
+                              .then((value) async {
+                            await context.read<TopicController>().updateTopic(
                                 context.read<VocabularysController>().topic);
-                            Navigator.pop(context);
                           });
+                          Navigator.pop(context);
                         },
                         child: Text(
                           AppLocalizations.of(context)!.save,

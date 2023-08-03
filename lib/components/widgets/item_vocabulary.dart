@@ -23,7 +23,7 @@ class _ItemVocabularyState extends State<ItemVocabulary>
   void initState() {
     // TODO: implement initState
     _animationController = AnimationController(
-        vsync: this, duration: const Duration(milliseconds: 200));
+        vsync: this, duration: const Duration(milliseconds: 100));
     _animation = Tween(begin: 0.0, end: 1.0).animate(_animationController)
       ..addListener(() {
         setState(() {});
@@ -63,7 +63,7 @@ class _ItemVocabularyState extends State<ItemVocabulary>
 
   Widget _item1() {
     return Container(
-      padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 40),
+      padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 20),
       margin: const EdgeInsets.all(10),
       alignment: Alignment.center,
       decoration: BoxDecoration(
@@ -85,12 +85,19 @@ class _ItemVocabularyState extends State<ItemVocabulary>
           ),
           Visibility(
             visible: widget.vocabulary.spelling == "" ? false : true,
-            child: Text(
-              widget.vocabulary.spelling,
-              style: TextStyle(
-                  fontSize: 16.sp,
-                  fontStyle: FontStyle.italic,
-                  color: Color(widget.vocabulary.textColor)),
+            child: Column(
+              children: [
+                const SizedBox(
+                  height: 10,
+                ),
+                Text(
+                  "/ ${widget.vocabulary.spelling} /",
+                  style: TextStyle(
+                      fontSize: 16.sp,
+                      fontStyle: FontStyle.italic,
+                      color: Color(widget.vocabulary.textColor)),
+                ),
+              ],
             ),
           ),
         ],
@@ -103,7 +110,7 @@ class _ItemVocabularyState extends State<ItemVocabulary>
       alignment: Alignment.center,
       transform: Matrix4.rotationX(pi),
       child: Container(
-        padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 40),
+        padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 20),
         margin: const EdgeInsets.all(10),
         alignment: Alignment.center,
         decoration: BoxDecoration(
@@ -123,12 +130,19 @@ class _ItemVocabularyState extends State<ItemVocabulary>
             ),
             Visibility(
               visible: widget.vocabulary.example == "" ? false : true,
-              child: Text(
-                widget.vocabulary.example,
-                style: TextStyle(
-                    fontSize: 16.sp,
-                    fontStyle: FontStyle.italic,
-                    color: Color(widget.vocabulary.textColor)),
+              child: Column(
+                children: [
+                  const SizedBox(
+                    height: 10,
+                  ),
+                  Text(
+                    widget.vocabulary.example,
+                    style: TextStyle(
+                        fontSize: 16.sp,
+                        fontStyle: FontStyle.italic,
+                        color: Color(widget.vocabulary.textColor)),
+                  ),
+                ],
               ),
             ),
           ],
