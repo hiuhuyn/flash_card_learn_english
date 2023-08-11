@@ -39,5 +39,7 @@
     "no_topic" : "Bạn chưa có chủ đề nào",
     "let_new_vocabulary" : "Hãy thêm từ vựng mới",
     "are_you_sure_you_want_to_download_the_vocabulary" : "Bạn có chắc chắn muốn tải xuống từ vựng không?",
-    "are_you_sure_you_want_to_delete_the_topic" : "Bạn có chắc chắn muốn xóa chủ đề?"
+    "are_you_sure_you_want_to_delete_the_topic" : "Bạn có chắc chắn muốn xóa chủ đề?",
+    "show_all_vocabulary_infomation" : "Hiển thị tất cả thông tin từ vựng",
+    "show_only_the_term_and_definitions_of_vocabulary" : "Chỉ hiển thị thuật ngữ và định nghĩa của từ vựng"
 }

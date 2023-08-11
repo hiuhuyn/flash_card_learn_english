@@ -78,7 +78,8 @@ class _AddVocabularyScreenState extends State<AddVocabularyScreen> {
                         _vocabularys[index].terms = value.trim();
                       },
                       onChangedSpelling: (value) {
-                        _vocabularys[index].spelling = value.trim();
+                        _vocabularys[index].spelling =
+                            value.trim().replaceAll("/", "");
                       },
                       onChangedDefine: (value) {
                         _vocabularys[index].define = value.trim();

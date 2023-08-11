@@ -39,5 +39,8 @@
     "no_topic" : "You don't have any topics yet",
     "let_new_vocabulary" : "Let's add new vocabulary",
     "are_you_sure_you_want_to_download_the_vocabulary" : "Are you sure you want to download the vocabulary ?",
-    "are_you_sure_you_want_to_delete_the_topic" : "Are you sure you want to delete the topic ?"
+    "are_you_sure_you_want_to_delete_the_topic" : "Are you sure you want to delete the topic ?",
+    "show_all_vocabulary_infomation" : "Show all vocabulary information",
+    "show_only_the_term_and_definitions_of_vocabulary" : "Show only the term and definitions of vocabulary"
+
 }

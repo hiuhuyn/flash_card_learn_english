@@ -2,18 +2,19 @@ import 'dart:math';
 
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import '../../models/vocabulary.dart';
 
-class ItemVocabulary extends StatefulWidget {
-  ItemVocabulary({super.key, required this.vocabulary});
+// hiển thị tất cả thông tin từ vựng
+class ItemVocabulary1 extends StatefulWidget {
+  ItemVocabulary1({super.key, required this.vocabulary});
   Vocabulary vocabulary;
 
   @override
-  State<ItemVocabulary> createState() => _ItemVocabularyState();
+  State<ItemVocabulary1> createState() => _ItemVocabulary1State();
 }
 
-class _ItemVocabularyState extends State<ItemVocabulary>
+class _ItemVocabulary1State extends State<ItemVocabulary1>
     with TickerProviderStateMixin {
   late AnimationController _animationController;
   late Animation _animation;
@@ -65,7 +66,7 @@ class _ItemVocabularyState extends State<ItemVocabulary>
     return Container(
       padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 20),
       margin: const EdgeInsets.all(10),
-      alignment: Alignment.center,
+      width: double.infinity,
       decoration: BoxDecoration(
           borderRadius: BorderRadius.circular(20),
           color: Color(widget.vocabulary.color),
@@ -86,14 +87,16 @@ class _ItemVocabularyState extends State<ItemVocabulary>
           Visibility(
             visible: widget.vocabulary.spelling == "" ? false : true,
             child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              mainAxisAlignment: MainAxisAlignment.center,
               children: [
                 const SizedBox(
                   height: 10,
                 ),
                 Text(
-                  "/ ${widget.vocabulary.spelling} /",
+                  widget.vocabulary.spelling,
                   style: TextStyle(
-                      fontSize: 16.sp,
+                      fontSize: 18.sp,
                       fontStyle: FontStyle.italic,
                       color: Color(widget.vocabulary.textColor)),
                 ),
@@ -110,12 +113,12 @@ class _ItemVocabularyState extends State<ItemVocabulary>
       alignment: Alignment.center,
       transform: Matrix4.rotationX(pi),
       child: Container(
-        padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 20),
+        padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 20),
         margin: const EdgeInsets.all(10),
-        alignment: Alignment.center,
+        width: double.infinity,
         decoration: BoxDecoration(
             borderRadius: BorderRadius.circular(20),
-            color: Color(widget.vocabulary.color).withOpacity(0.8),
+            color: Color(widget.vocabulary.color),
             boxShadow: const [
               BoxShadow(color: Colors.grey, blurRadius: 3, offset: Offset(2, 2))
             ]),
@@ -126,23 +129,30 @@ class _ItemVocabularyState extends State<ItemVocabulary>
             Text(
               widget.vocabulary.define,
               style: TextStyle(
-                  fontSize: 16.sp, color: Color(widget.vocabulary.textColor)),
+                  decoration: TextDecoration.underline,
+                  fontSize: 20.sp,
+                  color: Color(widget.vocabulary.textColor)),
             ),
             Visibility(
               visible: widget.vocabulary.example == "" ? false : true,
-              child: Column(
-                children: [
-                  const SizedBox(
-                    height: 10,
-                  ),
-                  Text(
-                    widget.vocabulary.example,
-                    style: TextStyle(
-                        fontSize: 16.sp,
-                        fontStyle: FontStyle.italic,
-                        color: Color(widget.vocabulary.textColor)),
-                  ),
-                ],
+              child: SizedBox(
+                width: double.infinity,
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: [
+                    const SizedBox(
+                      height: 10,
+                    ),
+                    Text(
+                      "${AppLocalizations.of(context)!.example}: ${widget.vocabulary.example}",
+                      style: TextStyle(
+                          fontSize: 18.sp,
+                          fontStyle: FontStyle.italic,
+                          color: Color(widget.vocabulary.textColor)),
+                    ),
+                  ],
+                ),
               ),
             ),
           ],

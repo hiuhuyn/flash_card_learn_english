@@ -6,13 +6,14 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import '../components/router/route_name.dart';
 import '../components/utils/notifications.dart';
+import '../components/widgets/item_vocabulary2.dart';
 import '../models/topic.dart';
 import '../models/vocabulary.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_slidable/flutter_slidable.dart';
 import 'package:provider/provider.dart';
 
-import '../components/widgets/item_vocabulary.dart';
+import '../components/widgets/item_vocabulary1.dart';
 
 class VocabularysScreen extends StatefulWidget {
   const VocabularysScreen({super.key});
@@ -25,7 +26,21 @@ class _VocabularysScreenState extends State<VocabularysScreen> {
   final TextEditingController _searchCtrl = TextEditingController();
   final FocusNode _focusNodeSearch = FocusNode();
   Topic _topic = Topic(title: '');
-  int i = 0;
+
+  int _typeShowVocabulary = 0;
+  Widget _itemShowVocabulary(Vocabulary data) {
+    Widget item = ItemVocabulary1(vocabulary: data);
+    switch (_typeShowVocabulary) {
+      case 0:
+        item = ItemVocabulary1(vocabulary: data);
+        break;
+      case 1:
+        item = ItemVocabulary2(vocabulary: data);
+        break;
+    }
+    return item;
+  }
+
   @override
   void initState() {
     // TODO: implement initState
@@ -83,6 +98,26 @@ class _VocabularysScreenState extends State<VocabularysScreen> {
                 Icons.delete,
                 color: Colors.white,
               )),
+          PopupMenuButton(
+            itemBuilder: (context) => [
+              PopupMenuItem(
+                  onTap: () {
+                    setState(() {
+                      _typeShowVocabulary = 0;
+                    });
+                  },
+                  child: Text(AppLocalizations.of(context)!
+                      .show_all_vocabulary_infomation)),
+              PopupMenuItem(
+                  onTap: () {
+                    setState(() {
+                      _typeShowVocabulary = 1;
+                    });
+                  },
+                  child: Text(AppLocalizations.of(context)!
+                      .show_only_the_term_and_definitions_of_vocabulary)),
+            ],
+          )
         ],
       ),
       body: Padding(
@@ -123,8 +158,6 @@ class _VocabularysScreenState extends State<VocabularysScreen> {
               child: Consumer<VocabularysController>(
                   builder: (context, controller, child) {
                 _topic = controller.topic;
-                print("build: $i");
-                i++;
                 return _topic.vocabularys.isEmpty
                     ? Center(
                         child: Text(
@@ -182,8 +215,8 @@ class _VocabularysScreenState extends State<VocabularysScreen> {
                                   ),
                               ],
                             ),
-                            child: ItemVocabulary(
-                              vocabulary: data,
+                            child: _itemShowVocabulary(
+                              data,
                             ),
                           );
                         },
@@ -229,7 +262,8 @@ class _VocabularysScreenState extends State<VocabularysScreen> {
                       vocabulary = vocabulary.copyWith(terms: value.trim());
                     },
                     onChangedSpelling: (value) {
-                      vocabulary = vocabulary.copyWith(spelling: value.trim());
+                      vocabulary = vocabulary.copyWith(
+                          spelling: value.trim().replaceAll("/", ""));
                     },
                     onChangedDefine: (value) {
                       vocabulary = vocabulary.copyWith(define: value.trim());
