@@ -41,6 +41,7 @@
     "are_you_sure_you_want_to_download_the_vocabulary" : "Are you sure you want to download the vocabulary ?",
     "are_you_sure_you_want_to_delete_the_topic" : "Are you sure you want to delete the topic ?",
     "show_all_vocabulary_infomation" : "Show all vocabulary information",
-    "show_only_the_term_and_definitions_of_vocabulary" : "Show only the term and definitions of vocabulary"
+    "show_only_the_term_and_definitions_of_vocabulary" : "Show only the term and definitions of vocabulary",
+    "add_information" : "Add information"
 
 }

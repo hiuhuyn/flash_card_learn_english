@@ -72,7 +72,7 @@ class _AddVocabularyScreenState extends State<AddVocabularyScreen> {
                               color: Colors.grey)
                         ],
                         color: Color(_vocabularys[index].color)),
-                    child: ItemSetVocabulary(
+                    child: ItemCreateVocabulary(
                       vocabulary: _vocabularys[index],
                       onChangedTerm: (value) {
                         _vocabularys[index].terms = value.trim();
