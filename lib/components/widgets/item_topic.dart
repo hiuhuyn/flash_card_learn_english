@@ -3,13 +3,13 @@ import 'package:flash_card_learn_english/data/db_offline/topic_sqlite_db.dart';
 import 'package:flash_card_learn_english/data/firebase/topic_db_fb.dart';
 import 'package:flash_card_learn_english/models/topic.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:flutter_gen/gen_l10n/app_localizations.dart';
+import '../../flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:provider/provider.dart';
 
 import '../utils/notifications.dart';
 import '../utils/utils.dart';
 
+// ignore: must_be_immutable
 class ItemTopic extends StatefulWidget {
   ItemTopic({
     super.key,
@@ -41,7 +41,7 @@ class _ItemTopicState extends State<ItemTopic> {
           children: [
             Text(
               widget.topic.title,
-              style: TextStyle(fontSize: 18.sp),
+              style: const TextStyle(fontSize: 18),
             ),
             const Spacer(),
             PopupMenuButton(

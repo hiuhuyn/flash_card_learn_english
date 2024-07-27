@@ -1,7 +1,7 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.example.flash_card_learn_english">
    <application
-        android:label="flash_card_learn_english"
+        android:label="Flash Card"
         android:name="${applicationName}"
         android:icon="@mipmap/ic_launcher">
         <activity

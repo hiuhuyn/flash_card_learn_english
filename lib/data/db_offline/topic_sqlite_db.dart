@@ -83,6 +83,7 @@ class TopicSqlite {
     } catch (e) {
       print("getTopic error: $e");
     }
+    return null;
   }
 
   static Future addTopic(Topic topic) async {

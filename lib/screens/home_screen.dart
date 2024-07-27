@@ -1,5 +1,5 @@
 import 'package:flash_card_learn_english/components/router/route_name.dart';
-import 'package:flutter_gen/gen_l10n/app_localizations.dart';
+import '../flutter_gen/gen_l10n/app_localizations.dart';
 import '../components/utils/utils.dart';
 import '../controllers/topic_controller.dart';
 import '../data/firebase/auth.dart';
@@ -117,13 +117,6 @@ class _HomeScreenState extends State<HomeScreen> {
             onTap: () {
               Navigator.pushNamed(context, RouteName.topicOffline);
             },
-          ),
-          ListTile(
-            title: Text(
-              AppLocalizations.of(context)!.open_in_computer,
-              style: const TextStyle(color: Colors.black),
-            ),
-            onTap: () {},
           ),
           ListTile(
             title: Text(

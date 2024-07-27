@@ -2,8 +2,7 @@ import 'package:flash_card_learn_english/components/widgets/item_setVocabulary.d
 import 'package:flash_card_learn_english/controllers/topic_controller.dart';
 import 'package:flash_card_learn_english/controllers/topic_controller_offline.dart';
 import 'package:flash_card_learn_english/controllers/vocabularys_controller.dart';
-import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:flutter_gen/gen_l10n/app_localizations.dart';
+import '../flutter_gen/gen_l10n/app_localizations.dart';
 import '../components/router/route_name.dart';
 import '../components/utils/notifications.dart';
 import '../components/widgets/item_vocabulary2.dart';
@@ -295,11 +294,12 @@ class _VocabularysScreenState extends State<VocabularysScreen> {
                             await context.read<TopicController>().updateTopic(
                                 context.read<VocabularysController>().topic);
                           });
+                          // ignore: use_build_context_synchronously
                           Navigator.pop(context);
                         },
                         child: Text(
                           AppLocalizations.of(context)!.save,
-                          style: TextStyle(fontSize: 18.sp),
+                          style: const TextStyle(fontSize: 18),
                         )),
                   ),
                   const SizedBox(
@@ -316,7 +316,7 @@ class _VocabularysScreenState extends State<VocabularysScreen> {
                         },
                         child: Text(
                           AppLocalizations.of(context)!.cancel,
-                          style: TextStyle(fontSize: 18.sp),
+                          style: const TextStyle(fontSize: 18),
                         )),
                   )
                 ],

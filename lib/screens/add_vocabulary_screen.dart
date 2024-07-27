@@ -2,7 +2,7 @@ import 'package:flash_card_learn_english/controllers/topic_controller.dart';
 import 'package:flash_card_learn_english/controllers/vocabularys_controller.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
-import 'package:flutter_gen/gen_l10n/app_localizations.dart';
+import '../flutter_gen/gen_l10n/app_localizations.dart';
 
 import '../components/widgets/item_setVocabulary.dart';
 import '../models/vocabulary.dart';
@@ -15,7 +15,7 @@ class AddVocabularyScreen extends StatefulWidget {
 }
 
 class _AddVocabularyScreenState extends State<AddVocabularyScreen> {
-  List<Vocabulary> _vocabularys = [Vocabulary()];
+  final List<Vocabulary> _vocabularys = [Vocabulary()];
 
   @override
   Widget build(BuildContext context) {

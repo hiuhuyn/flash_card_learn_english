@@ -1,11 +1,9 @@
 import 'package:flash_card_learn_english/controllers/vocabularys_controller.dart';
 
 import '../components/router/route_name.dart';
-import '../components/utils/notifications.dart';
 import '../controllers/topic_controller.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:flutter_gen/gen_l10n/app_localizations.dart';
+import '../flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:provider/provider.dart';
 import '../components/widgets/item_topic.dart';
 
@@ -59,7 +57,7 @@ class _TopicsScreenState extends State<TopicsScreen> {
                   keyboardType: TextInputType.text,
                   decoration: InputDecoration(
                       hintText: AppLocalizations.of(context)!.search,
-                      hintStyle: TextStyle(fontSize: 16.sp),
+                      hintStyle: const TextStyle(fontSize: 16),
                       icon: const Icon(Icons.search),
                       suffixIcon: IconButton(
                           onPressed: () {
@@ -89,7 +87,7 @@ class _TopicsScreenState extends State<TopicsScreen> {
                         ? Center(
                             child: Text(
                               AppLocalizations.of(context)!.no_topic,
-                              style: TextStyle(fontSize: 16.sp),
+                              style: const TextStyle(fontSize: 16),
                             ),
                           )
                         : ListView.builder(

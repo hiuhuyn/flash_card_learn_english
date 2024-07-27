@@ -1,11 +1,11 @@
 import 'dart:math';
 
 import 'package:flutter/material.dart';
-import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:flutter_gen/gen_l10n/app_localizations.dart';
+import '../../flutter_gen/gen_l10n/app_localizations.dart';
 import '../../models/vocabulary.dart';
 
 // hiển thị tất cả thông tin từ vựng
+// ignore: must_be_immutable
 class ItemVocabulary1 extends StatefulWidget {
   ItemVocabulary1({super.key, required this.vocabulary});
   Vocabulary vocabulary;
@@ -80,7 +80,7 @@ class _ItemVocabulary1State extends State<ItemVocabulary1>
           Text(
             widget.vocabulary.terms,
             style: TextStyle(
-                fontSize: 20.sp,
+                fontSize: 20,
                 color: Color(widget.vocabulary.textColor),
                 fontWeight: FontWeight.bold),
           ),
@@ -96,7 +96,7 @@ class _ItemVocabulary1State extends State<ItemVocabulary1>
                 Text(
                   widget.vocabulary.spelling,
                   style: TextStyle(
-                      fontSize: 18.sp,
+                      fontSize: 18,
                       fontStyle: FontStyle.italic,
                       color: Color(widget.vocabulary.textColor)),
                 ),
@@ -130,7 +130,7 @@ class _ItemVocabulary1State extends State<ItemVocabulary1>
               widget.vocabulary.define,
               style: TextStyle(
                   decoration: TextDecoration.underline,
-                  fontSize: 20.sp,
+                  fontSize: 20,
                   color: Color(widget.vocabulary.textColor)),
             ),
             Visibility(
@@ -147,7 +147,7 @@ class _ItemVocabulary1State extends State<ItemVocabulary1>
                     Text(
                       "${AppLocalizations.of(context)!.example}: ${widget.vocabulary.example}",
                       style: TextStyle(
-                          fontSize: 18.sp,
+                          fontSize: 18,
                           fontStyle: FontStyle.italic,
                           color: Color(widget.vocabulary.textColor)),
                     ),

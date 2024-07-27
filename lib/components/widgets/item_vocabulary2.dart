@@ -1,6 +1,5 @@
 import 'package:flash_card_learn_english/models/vocabulary.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 // hiển thị từ vựng và nghĩa của từ
 class ItemVocabulary2 extends StatefulWidget {
@@ -32,7 +31,7 @@ class _ItemVocabulary2State extends State<ItemVocabulary2> {
             Text(
               widget.vocabulary.terms,
               style: TextStyle(
-                  fontSize: 20.sp,
+                  fontSize: 20,
                   color: Color(widget.vocabulary.textColor),
                   fontWeight: FontWeight.bold),
             ),
@@ -42,7 +41,7 @@ class _ItemVocabulary2State extends State<ItemVocabulary2> {
             Text(
               widget.vocabulary.define,
               style: TextStyle(
-                  fontSize: 20.sp,
+                  fontSize: 20,
                   color: Color(widget.vocabulary.textColor),
                   fontStyle: FontStyle.italic,
                   fontWeight: FontWeight.normal),

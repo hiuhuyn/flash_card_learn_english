@@ -1,9 +1,9 @@
 import 'package:flash_card_learn_english/models/vocabulary.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_colorpicker/flutter_colorpicker.dart';
-import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:flutter_gen/gen_l10n/app_localizations.dart';
+import '../../flutter_gen/gen_l10n/app_localizations.dart';
 
+// ignore: must_be_immutable
 class ItemSetVocabulary extends StatefulWidget {
   ItemSetVocabulary(
       {super.key,
@@ -121,7 +121,7 @@ class _ItemSetVocabularyState extends State<ItemSetVocabulary> {
               icon: const Icon(Icons.color_lens, color: Colors.white),
               label: Text(
                 AppLocalizations.of(context)!.text_color,
-                style: TextStyle(fontSize: 13.sp, color: Colors.white),
+                style: const TextStyle(fontSize: 13, color: Colors.white),
               ),
               style: ElevatedButton.styleFrom(
                   foregroundColor: Colors.black,
@@ -134,7 +134,7 @@ class _ItemSetVocabularyState extends State<ItemSetVocabulary> {
                 icon: const Icon(Icons.colorize, color: Colors.white),
                 label: Text(
                   AppLocalizations.of(context)!.background_color,
-                  style: TextStyle(fontSize: 13.sp, color: Colors.white),
+                  style: const TextStyle(fontSize: 13, color: Colors.white),
                 ),
                 style: ElevatedButton.styleFrom(
                     foregroundColor: Colors.black,
@@ -183,6 +183,7 @@ class _ItemSetVocabularyState extends State<ItemSetVocabulary> {
   }
 }
 
+// ignore: must_be_immutable
 class ItemCreateVocabulary extends StatefulWidget {
   ItemCreateVocabulary(
       {super.key,
@@ -210,7 +211,6 @@ class _ItemCreateVocabularyState extends State<ItemCreateVocabulary> {
   bool _isShowInput34 = false;
   @override
   void initState() {
-    // TODO: implement initState
     _vocabulary = widget.vocabulary;
     super.initState();
   }
@@ -268,7 +268,7 @@ class _ItemCreateVocabularyState extends State<ItemCreateVocabulary> {
                 },
                 label: Text(
                   AppLocalizations.of(context)!.add_information,
-                  style: TextStyle(fontSize: 16.sp),
+                  style: const TextStyle(fontSize: 16),
                 ),
                 icon: const Icon(Icons.add)),
           ),
@@ -324,7 +324,8 @@ class _ItemCreateVocabularyState extends State<ItemCreateVocabulary> {
                       icon: const Icon(Icons.color_lens, color: Colors.white),
                       label: Text(
                         AppLocalizations.of(context)!.text_color,
-                        style: TextStyle(fontSize: 13.sp, color: Colors.white),
+                        style:
+                            const TextStyle(fontSize: 13, color: Colors.white),
                       ),
                       style: ElevatedButton.styleFrom(
                           foregroundColor: Colors.black,
@@ -338,8 +339,8 @@ class _ItemCreateVocabularyState extends State<ItemCreateVocabulary> {
                         icon: const Icon(Icons.colorize, color: Colors.white),
                         label: Text(
                           AppLocalizations.of(context)!.background_color,
-                          style:
-                              TextStyle(fontSize: 13.sp, color: Colors.white),
+                          style: const TextStyle(
+                              fontSize: 13, color: Colors.white),
                         ),
                         style: ElevatedButton.styleFrom(
                             foregroundColor: Colors.black,
