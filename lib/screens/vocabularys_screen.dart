@@ -98,6 +98,7 @@ class _VocabularysScreenState extends State<VocabularysScreen> {
                 color: Colors.white,
               )),
           PopupMenuButton(
+            color: Colors.white,
             itemBuilder: (context) => [
               PopupMenuItem(
                   onTap: () {
@@ -299,7 +300,10 @@ class _VocabularysScreenState extends State<VocabularysScreen> {
                         },
                         child: Text(
                           AppLocalizations.of(context)!.save,
-                          style: const TextStyle(fontSize: 18),
+                          style: const TextStyle(
+                            fontSize: 18,
+                            color: Colors.white,
+                          ),
                         )),
                   ),
                   const SizedBox(
@@ -316,7 +320,10 @@ class _VocabularysScreenState extends State<VocabularysScreen> {
                         },
                         child: Text(
                           AppLocalizations.of(context)!.cancel,
-                          style: const TextStyle(fontSize: 18),
+                          style: const TextStyle(
+                            fontSize: 18,
+                            color: Colors.white,
+                          ),
                         )),
                   )
                 ],

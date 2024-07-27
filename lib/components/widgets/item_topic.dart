@@ -45,6 +45,7 @@ class _ItemTopicState extends State<ItemTopic> {
             ),
             const Spacer(),
             PopupMenuButton(
+              color: Colors.white,
               itemBuilder: (context) => [
                 PopupMenuItem(
                   onTap: () {

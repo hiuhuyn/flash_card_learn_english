@@ -128,17 +128,19 @@ class _ItemSetVocabularyState extends State<ItemSetVocabulary> {
                   backgroundColor: const Color.fromARGB(255, 0, 140, 255)),
             ),
             ElevatedButton.icon(
-                onPressed: () {
-                  _showColorPicker(false);
-                },
-                icon: const Icon(Icons.colorize, color: Colors.white),
-                label: Text(
-                  AppLocalizations.of(context)!.background_color,
-                  style: const TextStyle(fontSize: 13, color: Colors.white),
-                ),
-                style: ElevatedButton.styleFrom(
-                    foregroundColor: Colors.black,
-                    backgroundColor: const Color.fromARGB(184, 133, 53, 239))),
+              onPressed: () {
+                _showColorPicker(false);
+              },
+              icon: const Icon(Icons.colorize, color: Colors.white),
+              label: Text(
+                AppLocalizations.of(context)!.background_color,
+                style: const TextStyle(fontSize: 13, color: Colors.white),
+              ),
+              style: ElevatedButton.styleFrom(
+                foregroundColor: Colors.black,
+                backgroundColor: const Color.fromARGB(255, 0, 140, 255),
+              ),
+            ),
           ],
         )
       ],
@@ -268,9 +270,15 @@ class _ItemCreateVocabularyState extends State<ItemCreateVocabulary> {
                 },
                 label: Text(
                   AppLocalizations.of(context)!.add_information,
-                  style: const TextStyle(fontSize: 16),
+                  style: const TextStyle(
+                    fontSize: 16,
+                    color: Colors.white,
+                  ),
                 ),
-                icon: const Icon(Icons.add)),
+                icon: const Icon(
+                  Icons.add,
+                  color: Colors.white,
+                )),
           ),
         ),
         SizedBox(
@@ -333,19 +341,20 @@ class _ItemCreateVocabularyState extends State<ItemCreateVocabulary> {
                               const Color.fromARGB(255, 0, 140, 255)),
                     ),
                     ElevatedButton.icon(
-                        onPressed: () {
-                          _showColorPicker(false);
-                        },
-                        icon: const Icon(Icons.colorize, color: Colors.white),
-                        label: Text(
-                          AppLocalizations.of(context)!.background_color,
-                          style: const TextStyle(
-                              fontSize: 13, color: Colors.white),
-                        ),
-                        style: ElevatedButton.styleFrom(
-                            foregroundColor: Colors.black,
-                            backgroundColor:
-                                const Color.fromARGB(184, 133, 53, 239))),
+                      onPressed: () {
+                        _showColorPicker(false);
+                      },
+                      icon: const Icon(Icons.colorize, color: Colors.white),
+                      label: Text(
+                        AppLocalizations.of(context)!.background_color,
+                        style:
+                            const TextStyle(fontSize: 13, color: Colors.white),
+                      ),
+                      style: ElevatedButton.styleFrom(
+                          foregroundColor: Colors.black,
+                          backgroundColor:
+                              const Color.fromARGB(255, 0, 140, 255)),
+                    ),
                   ],
                 )
               ],

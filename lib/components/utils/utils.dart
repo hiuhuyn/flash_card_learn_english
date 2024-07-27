@@ -79,7 +79,10 @@ Future showDialogEditTopic(BuildContext context,
                               },
                               child: Text(
                                 AppLocalizations.of(context)!.cancel,
-                                style: const TextStyle(fontSize: 20),
+                                style: const TextStyle(
+                                  fontSize: 18,
+                                  color: Colors.white,
+                                ),
                               )),
                         )),
                     const SizedBox(
@@ -100,10 +103,16 @@ Future showDialogEditTopic(BuildContext context,
                                 Navigator.pop(context);
                               }
                             },
-                            icon: const Icon(Icons.save),
+                            icon: const Icon(
+                              Icons.save,
+                              color: Colors.white,
+                            ),
                             label: Text(
                               AppLocalizations.of(context)!.save,
-                              style: const TextStyle(fontSize: 20),
+                              style: const TextStyle(
+                                fontSize: 18,
+                                color: Colors.white,
+                              ),
                             )),
                       ),
                     ),

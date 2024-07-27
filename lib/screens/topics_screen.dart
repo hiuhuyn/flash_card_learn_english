@@ -82,7 +82,7 @@ class _TopicsScreenState extends State<TopicsScreen> {
                     padding: const EdgeInsets.all(5),
                     decoration: BoxDecoration(
                         borderRadius: BorderRadius.circular(15),
-                        color: Colors.grey[200]),
+                        color: Colors.grey[100]),
                     child: controller.topics.isEmpty
                         ? Center(
                             child: Text(

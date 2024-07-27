@@ -97,6 +97,7 @@ class _HomeScreenState extends State<HomeScreen> {
 
   Drawer _drawer() {
     return Drawer(
+      backgroundColor: Colors.white,
       child: ListView(
         children: [
           _drawerHeader(),

@@ -10,6 +10,7 @@ class NotificationsSystem {
     showDialog(
       context: context,
       builder: (context) => AlertDialog(
+        backgroundColor: Colors.white,
         title: title,
         actions: [
           TextButton(
